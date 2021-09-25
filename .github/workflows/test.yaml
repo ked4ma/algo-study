@@ -1,6 +1,14 @@
 name: algo tests
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
   build:
@@ -12,5 +20,5 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-     - name: Test with Gradle
-       run: ./gradlew test
+      - name: Test with Gradle
+        run: ./gradlew test
