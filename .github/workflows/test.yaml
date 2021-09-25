@@ -5,10 +5,14 @@ on:
     branches:
       - main
       - master
+    paths:
+      - '**.kt'
   pull_request:
     branches:
       - main
       - master
+    paths:
+      - '**.kt'
 
 jobs:
   build:
