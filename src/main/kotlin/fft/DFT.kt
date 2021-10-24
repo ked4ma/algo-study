@@ -112,38 +112,3 @@ fun convolve(a: Array<Double>, b: Array<Double>): Array<Double> {
         it.real
     }.toTypedArray()
 }
-
-fun main() {
-    val ins = arrayOf(
-        "0001" to "101",
-        "0101010" to "1010101",
-        "10101000010011011110" to "0010011111"
-    )
-    val index = 1
-    val S = ins[index].first.toCharArray().map { it - '0' }
-    val T = ins[index].second.toCharArray().map { it - '0' }
-
-    val conv1 = convolve(
-        S.map { abs(1 - it).toDouble() }.toTypedArray(),
-        T.asReversed().map { it.toDouble() }.toTypedArray()
-    )
-    val conv2 = convolve(
-        S.map { it.toDouble() }.toTypedArray(),
-        T.asReversed().map { abs(1 - it).toDouble() }.toTypedArray()
-    )
-    val conv = conv1.zip(conv2).map {
-        (it.first.roundToInt() + it.second.roundToInt())
-    }
-    println(conv.toList())
-    println(conv.subList(T.size - 1, S.size))
-}
-
-fun main2() {
-    val a = arrayOf(0, 1, 2, 3, 4)
-    val b = arrayOf(0, 1, 2, 4, 8)
-    val ans = convolve(
-        a.map { it.toDouble() }.toTypedArray(),
-        b.map { it.toDouble() }.toTypedArray(),
-    ).map { it.roundToInt() }
-    println(ans)
-}
